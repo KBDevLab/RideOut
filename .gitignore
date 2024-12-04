@@ -97,6 +97,7 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+*.env
 
 # Chutzpah Test files
 _Chutzpah*
@@ -393,6 +394,11 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Ignore appsettings files (including environment-specific)
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
 
 # JetBrains Rider
 *.sln.iml
