@@ -402,3 +402,4 @@ appsettings.Production.json
 
 # JetBrains Rider
 *.sln.iml
+.DS_Store
