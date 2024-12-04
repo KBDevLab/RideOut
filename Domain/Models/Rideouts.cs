@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RideOut.Models;
+namespace RideOut.Domain.Models;
 
 public partial class Rideouts
 {

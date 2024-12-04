@@ -69,7 +69,7 @@ Make sure you have the following tools installed:
 
 ### Steps to Set Up Locally
 
-1. **Clone the Repository**:
+1. **Clone the Service**:
    ```bash
    git clone https://github.com/<your-username>/RideOut-App.git
    cd RideOut-App
@@ -168,10 +168,10 @@ To deploy the application:
 
 We welcome contributions to RideOut! Here’s how you can help:
 
-1. **Fork the repository** and clone your fork.
+1. **Fork the Service** and clone your fork.
 2. **Create a branch** for your feature or bug fix.
 3. **Make your changes** and test them thoroughly.
-4. **Submit a pull request** to the main repository.
+4. **Submit a pull request** to the main Service.
 
 ---
 

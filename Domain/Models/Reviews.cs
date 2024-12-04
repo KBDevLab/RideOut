@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RideOut.Models;
+namespace RideOut.Domain.Models;
 
-public partial class Participants
+public partial class Reviews
 {
-    public int Participantid { get; set; }
+    public int Reviewid { get; set; }
 
     public int Rideoutid { get; set; }
 
     public int Userid { get; set; }
 
-    public string Status { get; set; } = null!;
+    public int? Rating { get; set; }
 
-    public DateTime? Joinedat { get; set; }
+    public string? Comment { get; set; }
+
+    public DateTime? Reviewedat { get; set; }
 
     public virtual Rideouts Rideout { get; set; } = null!;
 

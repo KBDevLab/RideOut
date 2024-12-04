@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using RideOut.Models;
+using RideOut.Domain.Models;
 
-namespace RideOut.Data;
+namespace RideOut.Infrastructure.Data.Config;
 
 public partial class RideOutDbContext : DbContext
 {
@@ -27,10 +27,6 @@ public partial class RideOutDbContext : DbContext
     public virtual DbSet<Rideouts> Rideouts { get; set; }
 
     public virtual DbSet<Users> Users { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host=localhost;Database=rideOutDb;Username=kb;Password=Babyboy1228!");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
