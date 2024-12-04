@@ -1,0 +1,6 @@
+@RideOut_HostAddress = http://localhost:5114
+
+GET {{RideOut_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
