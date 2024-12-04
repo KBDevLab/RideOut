@@ -88,7 +88,7 @@ Ensure the following tools are installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/<username>/RideOut-App.git
+   git clone https://github.com/KBDevLab/RideOut-App.git
    cd RideOut-App
 
 	2.	Install Angular dependencies:
