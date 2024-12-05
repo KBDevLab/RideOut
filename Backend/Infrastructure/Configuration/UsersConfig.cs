@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RideOut.Domain.Models;
+using Rideout.Domain.Models;
 
 namespace MyProject.Infrastructure.Data.Config
 {

@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using RideOut.Application.Interface;
-using RideOut.Application.DTOs;
+using Rideout.Application.Interface;
+using Rideout.Application.DTOs;
 using System.Threading.Tasks;
 
-namespace RideOut.API.Controllers
+namespace Rideout.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

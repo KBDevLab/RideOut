@@ -1,4 +1,4 @@
-namespace RideOut.Domain.Exceptions
+namespace Rideout.Domain.Exceptions
 {
     public class DomainException : Exception
     {

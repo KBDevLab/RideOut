@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using RideOut.Domain.Models;
+using Rideout.Domain.Models;
 
-namespace RideOut.Infrastructure.Data.Config;
+namespace Rideout.Infrastructure.Data.Config;
 
 public partial class RideOutDbContext : DbContext
 {

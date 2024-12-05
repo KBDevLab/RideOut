@@ -1,11 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RideOut.Application.Interface;
-using RideOut.Application.Services;
-using RideOut.Infrastructure.Data.Interface;
-using RideOut.Infrastructure.Repositories;
-using RideOut.Infrastructure.Data.Config;
+using Rideout.Application.Interface;
+using Rideout.Application.Services;
+using Rideout.Infrastructure.Data;
+using Rideout.Infrastructure.Data.Interface;
+using Rideout.Infrastructure.Data.Config;
+using Rideout.Infrastructure.Repositories;
+using Rideout.Infrastructure.Data.Repositories;
+
 
 public class Program
 {
@@ -30,10 +33,12 @@ public class Program
         // Register application services
         builder.Services.AddScoped<IParticipantsService, ParticipantsService>();
         builder.Services.AddScoped<IUsersService, UsersService>();
+        builder.Services.AddScoped<IRideoutService, RideoutService>();
 
         // Register repositories
         builder.Services.AddScoped<IParticipantsRepository, ParticipantsRepository>();
         builder.Services.AddScoped<IUsersRepository, UsersRepository>();
+        builder.Services.AddScoped<IRideoutRepository, RideoutRepository>();
 
         // Add AutoMapper
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

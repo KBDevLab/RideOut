@@ -1,55 +1,54 @@
-using RideOut.Application.DTOs;
-using RideOut.Application.Interface;
-using RideOut.Domain.Models;
-using RideOut.Infrastructure.Repositories;
+using Rideout.Application.DTOs;
+using Rideout.Application.Interface;
+using Rideout.Domain.Models;
+using Rideout.Infrastructure.Data.Interface;
+using AutoMapper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using RideOut.Application.Mappers;
-using RideOut.Infrastructure.Data.Interface;
 
-namespace RideOut.Application.Services
+namespace Rideout.Application.Services
 {
     public class UsersService : IUsersService
     {
-        private readonly IUsersRepository _userRepository;
+        private readonly IUsersRepository _repository;  
+        private readonly IMapper _mapper;              
 
-        public UsersService(IUsersRepository userRepository)
+        public UsersService(IUsersRepository repository, IMapper mapper)
         {
-            _userRepository = userRepository;
+            _repository = repository;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<UsersDTO>> GetAllUsersAsync()
         {
-            var users = await _userRepository.GetAllAsync();
-            var UsersDTOs = UsersMapper.ToUsersDTOList(users);
-            return UsersDTOs;
+            var users = await _repository.GetAllUsersAsync();  
+            return _mapper.Map<IEnumerable<UsersDTO>>(users);    
         }
 
         public async Task<UsersDTO> GetUserByIdAsync(int userId)
         {
-            var user = await _userRepository.GetByIdAsync(userId);
-            if (user == null) return null;
-            return UsersMapper.ToUsersDTO(user);
+            var user = await _repository.GetUserByIdAsync(userId);  
+            return _mapper.Map<UsersDTO>(user);  
         }
 
-        public async Task<UsersDTO> CreateUserAsync(UsersDTO UsersDTO)
+        public async Task<UsersDTO> CreateUserAsync(UsersDTO userDto)
         {
-            var user = UsersMapper.ToUserEntity(UsersDTO);
-            var createdUser = await _userRepository.AddAsync(user);
-            return UsersMapper.ToUsersDTO(createdUser);
+            var user = _mapper.Map<Users>(userDto);  
+            var createdUser = await _repository.CreateUserAsync(user);  
+            return _mapper.Map<UsersDTO>(createdUser);  
         }
 
-        public async Task<UsersDTO> UpdateUserAsync(UsersDTO UsersDTO)
+        public async Task<UsersDTO> UpdateUserAsync(UsersDTO userDto)
         {
-            var user = UsersMapper.ToUserEntity(UsersDTO);
-            var updatedUser = await _userRepository.UpdateAsync(user);
-            return UsersMapper.ToUsersDTO(updatedUser);
+            var user = _mapper.Map<Users>(userDto);  
+            await _repository.UpdateUserAsync(user);  
+
+            return _mapper.Map<UsersDTO>(user);;
         }
 
         public async Task<bool> DeleteUserAsync(int userId)
         {
-            var isDeleted = await _userRepository.DeleteAsync(userId);
-            return isDeleted;
+            return await _repository.DeleteUserAsync(userId); 
         }
     }
 }

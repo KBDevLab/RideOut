@@ -1,9 +1,9 @@
-using RideOut.Domain.Models;
-using RideOut.Infrastructure.Data.Config;
+using Rideout.Domain.Models;
+using Rideout.Infrastructure.Data.Config;
 using Microsoft.EntityFrameworkCore;
-using RideOut.Infrastructure.Data.Interface;
+using Rideout.Infrastructure.Data.Interface;
 
-namespace RideOut.Infrastructure.Repositories
+namespace Rideout.Infrastructure.Repositories
 {
     public class ParticipantsRepository : IParticipantsRepository
     {

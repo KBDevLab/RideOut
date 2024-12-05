@@ -1,8 +1,8 @@
-using RideOut.Application.DTOs;
+using Rideout.Application.DTOs;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace RideOut.Application.Interface
+namespace Rideout.Application.Interface
 {
     public interface IUsersService
     {
