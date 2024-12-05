@@ -1,6 +1,6 @@
-using RideOut.Application.DTOs;
+using Rideout.Application.DTOs;
 
-namespace RideOut.Application.Interface
+namespace Rideout.Application.Interface
 
 {
     public interface IParticipantsService

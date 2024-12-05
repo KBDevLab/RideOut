@@ -19,4 +19,4 @@ COPY --from=build /out .
 EXPOSE 5000
 
 # Set the entry point
-ENTRYPOINT ["dotnet", "RideOut.dll"]
+ENTRYPOINT ["dotnet", "Rideout.dll"]

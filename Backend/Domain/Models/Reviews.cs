@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RideOut.Domain.Models;
+namespace Rideout.Domain.Models;
 
 public partial class Reviews
 {

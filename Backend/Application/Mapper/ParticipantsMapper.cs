@@ -1,7 +1,7 @@
-using RideOut.Domain.Models;
-using RideOut.Application.DTOs;
+using Rideout.Domain.Models;
+using Rideout.Application.DTOs;
 
-namespace RideOut.Application.Mappers
+namespace Rideout.Application.Mappers
 {
     public static class ParticipantMapper
     {

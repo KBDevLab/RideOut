@@ -1,4 +1,4 @@
-namespace RideOut.Application.DTOs
+namespace Rideout.Application.DTOs
 {
     public class ParticipantsDTO
     {

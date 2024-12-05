@@ -1,7 +1,7 @@
-using RideOut.Domain.Models;
+using Rideout.Domain.Models;
 
 
-namespace RideOut.Domain.Interface
+namespace Rideout.Domain.Interface
 {
 
     public interface IReviewService

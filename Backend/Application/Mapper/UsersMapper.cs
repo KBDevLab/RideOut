@@ -1,8 +1,8 @@
-using RideOut.Application.DTOs;
-using RideOut.Domain.Models;
+using Rideout.Application.DTOs;
+using Rideout.Domain.Models;
 using System.Collections.Generic;
 
-namespace RideOut.Application.Mappers
+namespace Rideout.Application.Mappers
 {
     public static class UsersMapper
     {

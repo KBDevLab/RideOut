@@ -1,54 +1,53 @@
-using RideOut.Domain.Models;
-using RideOut.Infrastructure.Data.Config;
-using Microsoft.EntityFrameworkCore;
+using Rideout.Domain.Models;
+using Rideout.Infrastructure.Data.Interface;
+using Rideout.Infrastructure.Data.Config;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using RideOut.Infrastructure.Data.Config;
-using RideOut.Infrastructure.Data.Interface;
+using Microsoft.EntityFrameworkCore;
 
-namespace RideOut.Infrastructure.Repositories
+namespace Rideout.Infrastructure.Data.Repositories
 {
     public class UsersRepository : IUsersRepository
     {
-        private readonly RideOutDbContext _dbContext;
+        private readonly RideOutDbContext _context;  
 
-        public UsersRepository(RideOutDbContext dbContext)
+        public UsersRepository(RideOutDbContext context)
         {
-            _dbContext = dbContext;
+            _context = context;
         }
 
-        public async Task<IEnumerable<Users>> GetAllAsync()
+        public async Task<IEnumerable<Users>> GetAllUsersAsync()
         {
-            return await _dbContext.Users.ToListAsync();
+            return await _context.Users.ToListAsync(); 
         }
 
-        public async Task<Users> GetByIdAsync(int userId)
+        public async Task<Users> GetUserByIdAsync(int userId)
         {
-            return await _dbContext.Users.FindAsync(userId);
+            return await _context.Users.FindAsync(userId);  
         }
 
-        public async Task<Users> AddAsync(Users user)
+        public async Task<Users> CreateUserAsync(Users user)
         {
-            _dbContext.Users.Add(user);
-            await _dbContext.SaveChangesAsync();
-            return user;
+            _context.Users.Add(user);  /
+            await _context.SaveChangesAsync();  
+            return user;  
         }
 
-        public async Task<Users> UpdateAsync(Users user)
+        public async Task UpdateUserAsync(Users user)
         {
-            _dbContext.Users.Update(user);
-            await _dbContext.SaveChangesAsync();
-            return user;
+            _context.Users.Update(user);  
+            await _context.SaveChangesAsync();  
         }
 
-        public async Task<bool> DeleteAsync(int userId)
+        public async Task<bool> DeleteUserAsync(int userId)
         {
-            var user = await _dbContext.Users.FindAsync(userId);
+            var user = await _context.Users.FindAsync(userId);  
             if (user == null)
-                return false;
-            _dbContext.Users.Remove(user);
-            await _dbContext.SaveChangesAsync();
-            return true;
+                return false;  
+
+            _context.Users.Remove(user);  
+            await _context.SaveChangesAsync();  
+            return true;  
         }
     }
 }

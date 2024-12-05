@@ -1,10 +1,10 @@
-using RideOut.Application.Interface;
-using RideOut.Application.DTOs;
-using RideOut.Application.Mappers;
-using RideOut.Domain.Models;
-using RideOut.Infrastructure.Data.Interface;
+using Rideout.Application.Interface;
+using Rideout.Application.DTOs;
+using Rideout.Application.Mappers;
+using Rideout.Domain.Models;
+using Rideout.Infrastructure.Data.Interface;
 
-namespace RideOut.Application.Services
+namespace Rideout.Application.Services
 {
     public class ParticipantsService : IParticipantsService
     {

@@ -1,8 +1,8 @@
-using RideOut.Domain.Models;
+using Rideout.Domain.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace RideOut.Domain.Interface
+namespace Rideout.Domain.Interface
 {
     public interface IMessageService
     {

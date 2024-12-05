@@ -1,15 +1,15 @@
-using RideOut.Domain.Models;
+using Rideout.Domain.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace RideOut.Infrastructure.Data.Interface
+namespace Rideout.Infrastructure.Data.Interface
 {
     public interface IUsersRepository
     {
-        Task<IEnumerable<Users>> GetAllAsync();
-        Task<Users> GetByIdAsync(int userId);
-        Task<Users> AddAsync(Users user);
-        Task<Users> UpdateAsync(Users user);
-        Task<bool> DeleteAsync(int userId);
+        Task<IEnumerable<Users>> GetAllUsersAsync();  
+        Task<Users> GetUserByIdAsync(int userId);     
+        Task<Users> CreateUserAsync(Users user);       
+        Task UpdateUserAsync(Users user);             
+        Task<bool> DeleteUserAsync(int userId);      
     }
 }
