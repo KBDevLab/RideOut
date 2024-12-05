@@ -8,7 +8,7 @@ services:
       - "5000:5000"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=database;Port=5432;Database=rideOutDB;User Id=kb;Password=Babyboy1228!
+      - ConnectionStrings__DefaultConnection=${ConnectionStrings__DefaultConnection}
     depends_on:
       - database
 
@@ -19,9 +19,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: kb
-      POSTGRES_PASSWORD: Babyboy1228!
-      POSTGRES_DB: rideOutDB
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -38,3 +38,4 @@ services:
 
 volumes:
   postgres_data:
+  
