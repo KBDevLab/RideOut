@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Rideout.Domain.Models;
 
-namespace MyProject.Infrastructure.Data.Config
+namespace Rideout.Infrastructure.Data.Config
 {
     public class UsersConfig : IEntityTypeConfiguration<Users>
     {

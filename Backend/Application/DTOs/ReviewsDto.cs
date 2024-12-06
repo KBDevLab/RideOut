@@ -4,24 +4,18 @@ namespace Rideout.Application.DTOs
 {
 
     public class ReviewsDto
-    {
-    public int Rideoutid { get; set; }
+    {    
+        public int Reviewid { get; set; }
 
-    public int Hostuserid { get; set; }
+        public int Rideoutid { get; set; }
 
-    public string Title { get; set; } = null!;
+        public int Userid { get; set; }
 
-    public string? Description { get; set; }
+        public int? Rating { get; set; }
 
-    public string Location { get; set; } = null!;
+        public string? Comment { get; set; }
 
-    public DateTime Datetime { get; set; }
-
-    public int? Maxparticipants { get; set; }
-
-    public DateTime? Createdat { get; set; }
-
-    public DateTime? Updatedat { get; set; }
+        public DateTime? Reviewedat { get; set; }
     }
 
 }
