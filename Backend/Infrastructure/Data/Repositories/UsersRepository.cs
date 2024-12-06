@@ -28,7 +28,7 @@ namespace Rideout.Infrastructure.Data.Repositories
 
         public async Task<Users> CreateUserAsync(Users user)
         {
-            _context.Users.Add(user);  /
+            _context.Users.Add(user);  
             await _context.SaveChangesAsync();  
             return user;  
         }

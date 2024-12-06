@@ -1,19 +1,17 @@
-using Rideout.Application.DTOs;
 using Rideout.Domain.Models;
-using System.Collections.Generic;
+using Rideout.Application.DTOs;
 using AutoMapper;
 
-namespace  Rideout.Application.Mapper
+namespace  Rideot.Application.Mapper
 {
-public class UsersProfile : Profile
+public class RideoutProfile : Profile
 {
-    public UsersProfile()
+    public RideoutProfile()
     {
-        CreateMap<Users, UsersDto>();
-        CreateMap<UsersDto, Users>()
+        CreateMap<Rideouts, RideoutDto>();
+        CreateMap<RideoutDto, Rideouts>()
             .ForMember(dest => dest.Createdat, opt => opt.MapFrom(src => DateTime.UtcNow))
             .ForMember(dest => dest.Updatedat, opt => opt.MapFrom(src => DateTime.UtcNow));
     }
 }
 }
-

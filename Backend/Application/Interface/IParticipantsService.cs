@@ -1,14 +1,14 @@
 using Rideout.Application.DTOs;
+using Rideout.Domain.Models;
 
 namespace Rideout.Application.Interface
 
 {
     public interface IParticipantsService
     {
-        Task<ParticipantsDTO> AddParticipantAsync(ParticipantsDTO participantDTO);
-        Task<ParticipantsDTO> GetParticipantByIdAsync(int participantId);
-        Task<IEnumerable<ParticipantsDTO>> GetParticipantsByRideOutIdAsync(int rideOutId);
-        Task<ParticipantsDTO> UpdateParticipantStatusAsync(int participantId, string status);
+        Task<ParticipantsDto> AddAsync(ParticipantsDto participantDTO);
+        Task<ParticipantsDto> GetParticipantByIdAsync(int participantId);
+        Task<ParticipantsDto> UpdateParticipantAsync(int participantId, ParticipantsDto participant);
         Task<bool> RemoveParticipantAsync(int participantId);
     }
 }

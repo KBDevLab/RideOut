@@ -1,6 +1,6 @@
-# RideOut App
+# Rideout App
 
-**RideOut** is a web application designed for enthusiasts of motorcycles, mini bikes, go-karts, bicycles, scooters, e-bikes, and similar vehicles. The app allows users to create accounts, discover local events, and securely join private meet-ups. Event details, including locations, are only accessible to approved participants, with access controlled via time-sensitive authentication tokens for enhanced privacy and security.
+**Rideout** is a web application designed for enthusiasts of motorcycles, mini bikes, go-karts, bicycles, scooters, e-bikes, and similar vehicles. The app allows users to create accounts, discover local events, and securely join private meet-ups. Event details, including locations, are only accessible to approved participants, with access controlled via time-sensitive authentication tokens for enhanced privacy and security.
 
 ---
 
@@ -22,7 +22,7 @@
 
 ## Overview
 
-The **RideOut** app provides a platform for users to:
+The **Rideout** app provides a platform for users to:
 
 - **Create accounts** and personalize their profiles.
 - **Discover local events** related to rideable vehicles.
@@ -88,8 +88,8 @@ Ensure the following tools are installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/<username>/RideOut-App.git
-   cd RideOut-App
+   git clone https://github.com/<username>/Rideout-App.git
+   cd Rideout-App
 
 	2.	Install Angular dependencies:
 
@@ -134,7 +134,7 @@ Once the app is running locally, you can:
 
 Database Schema
 
-The RideOut app utilizes the following key tables:
+The Rideout app utilizes the following key tables:
 	•	Users: Stores user information (UserID, Name, Email, PasswordHash, Location, ProfilePicture, etc.)
 	•	RideOuts: Stores event details (RideOutID, HostUserID, Title, Description, Location, DateTime, MaxParticipants)
 	•	Participants: Tracks user participation in events (ParticipantID, RideOutID, UserID, Status)
@@ -143,7 +143,7 @@ The RideOut app utilizes the following key tables:
 
 API
 
-The RideOut app provides the following API endpoints:
+The Rideout app provides the following API endpoints:
 	•	POST /api/auth/register: Register a new user.
 	•	POST /api/auth/login: Login and retrieve an authentication token.
 	•	GET /api/rideouts: List public events.
@@ -174,7 +174,7 @@ docker build -t rideout-app .
 
 Contributing
 
-We welcome contributions to RideOut! Here’s how you can contribute:
+We welcome contributions to Rideout! Here’s how you can contribute:
 	1.	Fork the repository and clone your fork.
 	2.	Create a new branch for your feature or bug fix.
 	3.	Make changes and test them thoroughly.

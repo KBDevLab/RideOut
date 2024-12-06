@@ -7,10 +7,10 @@ namespace Rideout.Application.Interface
 {
     public interface IRideoutService
     {
-        Task<IEnumerable<RideOutDTO>> GetAllRideOutsAsync();
-        Task<RideOutDTO> GetRideOutByIdAsync(int rideOutId);
-        Task<RideOutDTO> CreateRideOutAsync(RideOutDTO rideOutDTO);
-        Task<bool> UpdateRideOutAsync(int rideOutId, RideOutDTO rideOutDTO);
+        Task<IEnumerable<RideoutDto>> GetAllRideOutsAsync();
+        Task<RideoutDto> GetRideOutByIdAsync(int rideOutId);
+        Task<RideoutDto> CreateRideOutAsync(RideoutDto rideOutDTO);
+        Task<bool> UpdateRideOutAsync(int rideOutId, RideoutDto rideOutDTO);
         Task<bool> DeleteRideOutAsync(int rideOutId);
     }
 }

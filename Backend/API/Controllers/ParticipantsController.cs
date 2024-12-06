@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Rideout.Application.DTOs;
 using Rideout.Application.Interface;
 using Rideout.Infrastructure.Data.Interface; 
+using Rideout.Domain.Models;
 
 namespace Rideout.API.Controllers
 {
@@ -17,9 +18,9 @@ namespace Rideout.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddParticipant(ParticipantsDTO participantDTO)
+        public async Task<IActionResult> AddParticipant(ParticipantsDto participantDTO)
         {
-            var createdParticipant = await _participantService.AddParticipantAsync(participantDTO);
+            var createdParticipant = await _participantService.AddAsync(participantDTO);
             return CreatedAtAction(nameof(GetParticipantById), new { id = createdParticipant.ParticipantID }, createdParticipant);
         }
 
@@ -34,17 +35,10 @@ namespace Rideout.API.Controllers
             return Ok(participant);
         }
 
-        [HttpGet("rideout/{rideOutId}")]
-        public async Task<IActionResult> GetParticipantsByRideOutId(int rideOutId)
-        {
-            var participants = await _participantService.GetParticipantsByRideOutIdAsync(rideOutId);
-            return Ok(participants);
-        }
-
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateParticipantStatus(int id, [FromBody] string status)
+        public async Task<IActionResult> UpdateParticipant(int id, [FromBody] ParticipantsDto participant)
         {
-            var updatedParticipant = await _participantService.UpdateParticipantStatusAsync(id, status);
+            var updatedParticipant = await _participantService.UpdateParticipantAsync(id, participant);
             if (updatedParticipant == null)
             {
                 return NotFound();

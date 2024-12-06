@@ -18,14 +18,14 @@ namespace Rideout.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RideOutDTO>>> GetRideOuts()
+        public async Task<ActionResult<IEnumerable<RideoutDto>>> GetRideOuts()
         {
             var rideOuts = await _rideOutService.GetAllRideOutsAsync();
             return Ok(rideOuts);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<RideOutDTO>> GetRideOut(int id)
+        public async Task<ActionResult<RideoutDto>> GetRideOut(int id)
         {
             var rideOut = await _rideOutService.GetRideOutByIdAsync(id);
             if (rideOut == null)
@@ -36,7 +36,7 @@ namespace Rideout.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<RideOutDTO>> CreateRideOut(RideOutDTO rideOutDto)
+        public async Task<ActionResult<RideoutDto>> CreateRideOut(RideoutDto rideOutDto)
         {
             var createdRideOut = await _rideOutService.CreateRideOutAsync(rideOutDto);
             return CreatedAtAction(nameof(GetRideOut), new { id = createdRideOut.RideOutID }, createdRideOut);

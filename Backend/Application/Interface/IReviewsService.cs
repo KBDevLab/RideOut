@@ -1,15 +1,14 @@
-using Rideout.Domain.Models;
+using Rideout.Application.DTOs;
 
 
 namespace Rideout.Domain.Interface
 {
 
-    public interface IReviewService
+    public interface IReviewsService
     {
-        Task<IEnumerable<Reviews>> GetReviewsByRideOutIdAsync(int rideOutId);
-        Task<Reviews> GetReviewByIdAsync(int reviewId);
-        Task<Reviews> AddReviewAsync(Reviews review);
-        Task<Reviews> UpdateReviewAsync(Reviews review);
-        Task DeleteReviewAsync(int reviewId);
+        Task<ReviewsDto> GetReviewByIdAsync(int reviewId);
+        Task<ReviewsDto> CreateReviewAsync(ReviewsDto review);
+        Task<ReviewsDto> UpdateReviewAsync(int reviewId,ReviewsDto review);
+        Task<bool> DeleteReviewAsync(int reviewId);
     }
 }

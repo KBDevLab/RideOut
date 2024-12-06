@@ -3,52 +3,49 @@ using Rideout.Application.DTOs;
 using Rideout.Application.Mappers;
 using Rideout.Domain.Models;
 using Rideout.Infrastructure.Data.Interface;
+using AutoMapper;
 
 namespace Rideout.Application.Services
 {
     public class ParticipantsService : IParticipantsService
     {
-        private readonly IParticipantsRepository _participantRepository;
-
-        public ParticipantsService(IParticipantsRepository participantRepository)
+        private readonly IParticipantsRepository _repository;
+        private readonly IMapper _mapper;
+        public ParticipantsService(IParticipantsRepository participantRepository, IMapper mapper)
         {
-            _participantRepository = participantRepository;
+            _repository = participantRepository;
+            _mapper = mapper;
         }
 
-        public async Task<ParticipantsDTO> AddParticipantAsync(ParticipantsDTO participantDTO)
+        public async Task<ParticipantsDto> AddAsync(ParticipantsDto participantDTO)
         {
-            var participantEntity = ParticipantMapper.ToEntity(participantDTO);
-            var addedParticipant = await _participantRepository.AddAsync(participantEntity);
-            return ParticipantMapper.ToDTO(addedParticipant);
+            var participant = _mapper.Map<Participants>(participantDTO);  
+            var createdParticipant = await _repository.AddAsync(participant);  
+            return _mapper.Map<ParticipantsDto>(createdParticipant); 
         }
 
-        public async Task<ParticipantsDTO> GetParticipantByIdAsync(int participantId)
+        public async Task<ParticipantsDto> GetParticipantByIdAsync(int participantId)
         {
-            var participant = await _participantRepository.GetByIdAsync(participantId);
-            return participant == null ? null : ParticipantMapper.ToDTO(participant);
+            var participant = await _repository.GetByIdAsync(participantId);
+
+            return _mapper.Map<ParticipantsDto>(participant);
         }
 
-        public async Task<IEnumerable<ParticipantsDTO>> GetParticipantsByRideOutIdAsync(int rideOutId)
-        {
-            var participants = await _participantRepository.GetParticipantsByRideOutIdAsync(rideOutId);
-            return participants.Select(ParticipantMapper.ToDTO);
-        }
 
-        public async Task<ParticipantsDTO> UpdateParticipantStatusAsync(int participantId, string status)
+        public async Task<ParticipantsDto> UpdateParticipantAsync(int participantId, ParticipantsDto participant)
         {
-            var participant = await _participantRepository.GetByIdAsync(participantId);
-            if (participant != null)
-            {
-                participant.Status = status;
-                var updatedParticipant = await _participantRepository.UpdateAsync(participant);
-                return ParticipantMapper.ToDTO(updatedParticipant);
-            }
-            return null;
+
+ 
+                var currentParticipant = await _repository.GetByIdAsync(participantId);
+                _mapper.Map(participant, currentParticipant);
+                _repository.UpdateParticipantAsync(participantId, currentParticipant);
+                
+                return participant;
         }
 
         public async Task<bool> RemoveParticipantAsync(int participantId)
         {
-            return await _participantRepository.DeleteAsync(participantId);
+            return await _repository.DeleteAsync(participantId);
         }
     }
 }
