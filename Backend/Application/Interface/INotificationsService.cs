@@ -1,6 +1,6 @@
 using Rideout.Domain.Models;
 
-namespace Rideout.Domain.Interface
+namespace Rideout.Application.Interface
 {
     public interface INotificationService
     {

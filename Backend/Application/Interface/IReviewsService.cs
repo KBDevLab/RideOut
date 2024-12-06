@@ -1,7 +1,7 @@
 using Rideout.Application.DTOs;
 
 
-namespace Rideout.Domain.Interface
+namespace Rideout.Application.Interface
 {
 
     public interface IReviewsService
