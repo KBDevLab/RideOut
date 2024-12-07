@@ -1,0 +1,53 @@
+.header {
+    background-color: #3f51b5;
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+  
+    .navbar {
+      width: 100%;
+    }
+  
+    .navbar-brand .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+  
+    .navbar-nav {
+      display: flex;
+      gap: 15px;
+  
+      .nav-link {
+        color: white;
+        text-decoration: none;
+        padding: 5px 10px;
+        transition: background-color 0.3s;
+  
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+  
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  
+      button {
+        color: white;
+        text-transform: none;
+      }
+    }
+  }

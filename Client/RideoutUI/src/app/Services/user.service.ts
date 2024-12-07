@@ -6,23 +6,32 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+  private readonly apiUrl = 'https://localhost:7026/users';
 
-  private apiUrl = 'https://localhost:7026';
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-
-
-  getUsers(): Observable<any[]>{
-    return this.http.get<any[]>('${this.apiUrl}/users');
+  // Get all users (POST)
+  getUsers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}`);
   }
 
-
-  getUserById(userId: number): Observable<any[]>{
-    return this.http.get<any[]>('${this.apiUrl}/users/${userId}');
+  // Get a user by ID (GET)
+  getUserById(userId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${userId}`);
   }
 
-  // createUser(): Observable<any[]>{
-  //   return this.http.post<any[]>();
-  // }
+  // Create a new user (POST)
+  createUser(user: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}`, user);
+  }
+
+  // Update an existing user (PUT)
+  updateUser(userId: string, user: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${userId}`, user);
+  }
+
+  // Delete a user (DELETE)
+  deleteUser(userId: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${userId}`);
+  }
 }
