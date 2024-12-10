@@ -1,0 +1,32 @@
+<div class="main-container">
+  <div style="position: absolute;"></div>
+  
+  <div class="hero-section">
+    <h1>Welcome back, {{ user?.Name }}!</h1>
+    <div class="quick-actions">
+      <button mat-raised-button class="btn-main" [routerLink]="['/create-rideout']">Create RideOut</button>
+      <button mat-raised-button class="btn-main" [routerLink]="['/rideouts']">Join a RideOut</button>
+      <button mat-raised-button class="btn-main" [routerLink]="['/profile']">View Profile</button>
+    </div>
+  </div>
+  
+  <mat-tab-group class="tab-group-primary">
+    <mat-tab label="Rideouts">
+      <div class="tab-content">
+        Rideouts
+      <div class="content-container">
+      </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Timeline">
+      <div class="tab-content">
+        Timneline
+      </div>
+    </mat-tab>
+    <mat-tab label="Explore">
+      <div class="tab-content">
+        Explore
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

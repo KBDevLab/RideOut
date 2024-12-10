@@ -1,0 +1,18 @@
+button[mat-icon-button] {
+    padding: 0;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  mat-menu-item {
+    font-size: 14px;
+  }
+  
+  mat-icon {
+    margin-right: 10px;
+  }

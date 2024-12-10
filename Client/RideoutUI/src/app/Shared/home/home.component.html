@@ -1,1 +1,40 @@
-<p>home works!</p>
+<div class="">
+  <section class="hero-section" aria-labelledby="hero-title">
+    <h1 id="hero-title">Discover Your Next Adventure</h1>
+    <p>Join, Host, or Explore RideOuts with fellow enthusiasts.</p>
+    <div class="hero-buttons">
+      <button mat-raised-button class="btn-main" (click)="navigateTo('/rideouts/join')" aria-label="Explore Rideouts">Explore Rideouts</button>
+      <button mat-stroked-button class="btn-secondary" (click)="navigateTo('/rideouts/create')" aria-label="Host a RideOut">Host a RideOut</button>
+    </div>
+  </section>
+
+  <section class="features" aria-labelledby="features-title">
+    <h2 id="features-title">Why Choose RideOut?</h2>
+    <mat-grid-list cols="3" gutterSize="20px" rowHeight="3:1" class="feature-grid">
+      <mat-grid-tile *ngFor="let feature of features" class="feature-tile" [ngClass]="{'empty': !feature}">
+        <div class="feature-content" *ngIf="feature">
+          <mat-icon class="feature-icon">{{ feature.icon }}</mat-icon>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </section>
+
+  <section class="testimonials" aria-labelledby="testimonials-title">
+    <h2 id="testimonials-title">What Riders Say</h2>
+    <div class="testimonial-cards">
+      <mat-card *ngFor="let testimonial of testimonials" class="testimonial-card">
+        <mat-card-content>
+          <p>"{{ testimonial.quote }}"</p>
+          <mat-card-subtitle>- {{ testimonial.author }}</mat-card-subtitle>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+  <section class="cta-section" aria-labelledby="cta-title">
+    <h2 id="cta-title">Ready to Ride?</h2>
+    <button mat-raised-button (click)="navigateTo('/register')" aria-label="Sign Up Now">Sign Up Now</button>
+  </section>
+</div>

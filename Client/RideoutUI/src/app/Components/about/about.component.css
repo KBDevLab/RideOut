@@ -1,0 +1,61 @@
+.about-page {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .about-card {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  
+    .mat-card-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .mat-card-content {
+      h3 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+  
+      mat-list {
+        margin: 10px 0;
+  
+        mat-list-item {
+          mat-icon {
+            margin-right: 10px;
+            color: #3f51b5;
+          }
+        }
+      }
+  
+      mat-grid-list {
+        margin-top: 20px;
+  
+        mat-grid-tile {
+          cursor: pointer;
+  
+          mat-grid-tile-footer {
+            text-align: center;
+          }
+  
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  
+    .mat-card-actions {
+      justify-content: center;
+      margin-top: 20px;
+  
+      button {
+        margin: 0 10px;
+      }
+    }
+  }

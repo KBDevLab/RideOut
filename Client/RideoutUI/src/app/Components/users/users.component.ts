@@ -13,10 +13,10 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule, 
     MatCardModule, 
-    MatButtonModule 
+    MatButtonModule
   ],
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.css',  '../../Layout/Main/main/main.component.css']
 })
 export class UsersComponent implements OnInit, OnDestroy {
   user: User | null = null;

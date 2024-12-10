@@ -6,6 +6,6 @@ export interface User {
     Location: string;
     Profilepicture: string;
     Bio: string;
-    Createdat: Date;
-    Updatedat: Date;
+    Createdat: string;
+    Updatedat: string;
   }

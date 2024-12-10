@@ -1,0 +1,45 @@
+<div class="login-container">
+    <mat-card class="login-card">
+      <mat-card-header>
+        <mat-card-title class="txt-card-title">Welcome to RideOuts</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline">
+            <input
+            matInput
+            type="email"
+            placeholder="pat@example.com"
+            required
+          />
+          @if (!user?.Email) {
+            <!-- <mat-error>{{errorMessage()}}</mat-error> -->
+          }
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="Password" formControlName="password" required>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+              Password is required.
+            </mat-error>
+          </mat-form-field>
+  
+          <div class="button-container">
+            <button mat-raised-button class="btn-main" type="submit" [disabled]="!loginForm.valid">Login</button>
+          </div>
+  
+          <div class="forgot-password">
+            <a routerLink="/forgot-password">Forgot Password?</a>
+          </div>
+  
+          <mat-divider></mat-divider>
+  
+          <div class="signup">
+            Don't have an account? <a routerLink="/register">Sign Up</a>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+    <p class="error-message" *ngIf="error">{{ error }}</p>
+  </div>

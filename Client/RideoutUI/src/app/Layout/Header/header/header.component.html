@@ -1,26 +1,18 @@
-<header class="header">
-    <div class="container">
-      <nav class="navbar">
-        <div class="navbar-brand">
-          <a [routerLink]="['/']" class="logo">RideShare</a>
-        </div>
-        <div class="navbar-nav">
-          <a [routerLink]="['/rideouts']" class="nav-link">Ride Outs</a>
-          <a [routerLink]="['/messages']" class="nav-link">Messages</a>
-          <a [routerLink]="['/reviews']" class="nav-link">Reviews</a>
-        </div>
-        <div class="navbar-right">
-          <button *ngIf="!isAuthenticated" mat-button [routerLink]="['/login']">Login</button>
-          <button *ngIf="!isAuthenticated" mat-button [routerLink]="['/register']">Register</button>
-          <!-- <button *ngIf="isAuthenticated" mat-button (click)="logout()">Logout</button> -->
-          <button mat-icon-button [matMenuTriggerFor]="userMenu">
-            <mat-icon>account_circle</mat-icon>
-          </button>
-          <mat-menu #userMenu="matMenu">
-            <button mat-menu-item [routerLink]="['/profile']">Profile</button>
-            <button mat-menu-item [routerLink]="['/settings']">Settings</button>
-          </mat-menu>
-        </div>
-      </nav>
-    </div>
+<header class="header-container">
+  <div class="logo-section">
+    <img src="../../../../assets/rideout.jpeg" alt="Rideout Logo" class="logo" />
+    <a routerLink="/home"><span class="app-title">RideOut</span></a>
+  </div>
+
+  <nav class="nav-links">
+    <button mat-button routerLink="/home">Home</button>
+    <button mat-button routerLink="/rideouts">Rideouts</button>
+    <button mat-button routerLink="/about">About</button>
+  </nav>
+
+  <div class="action-icons">
+    <app-notificationsicon></app-notificationsicon>
+    <app-settingsicon></app-settingsicon>
+    <app-profileicon></app-profileicon>
+  </div>
   </header>

@@ -1,1 +1,68 @@
-<p>rideout works!</p>
+<div class="rideouts-page">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>RideOuts</mat-card-title>
+        <mat-card-subtitle>Explore, Join, and Share Your Adventures</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-tab-group>
+          <mat-tab label="Upcoming">
+            <div class="upcoming-rideouts">
+              <mat-list>
+                <mat-list-item *ngFor="">
+                  <img mat-list-avatar [src]="">
+                  <div mat-line></div>
+                  <div mat-line></div>
+                  <button mat-icon-button >
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </mat-list-item>
+              </mat-list>
+              <button mat-button [routerLink]="['/create-rideout']">Host a New RideOut</button>
+            </div>
+          </mat-tab>
+          <mat-tab label="Joined">
+            <div class="joined-rideouts">
+              <mat-list>
+                <mat-list-item *ngFor="">
+                  <img mat-list-avatar [src]="" alt="RideOut Image">
+                  <div mat-line></div>
+                  <div mat-line></div>
+                  <button mat-icon-button [routerLink]="">
+                    <mat-icon>info</mat-icon>
+                  </button>
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </mat-tab>
+          <mat-tab label="Gallery">
+            <div class="gallery">
+              <mat-grid-list cols="3" rowHeight="2:1">
+                <mat-grid-tile *ngFor="">
+                  <img mat-card-image [src]="" alt="RideOut Photo">
+                  <mat-grid-tile-footer>
+                    <h4 mat-line></h4>
+                    <p mat-line></p>
+                  </mat-grid-tile-footer>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </div>
+          </mat-tab>
+          <mat-tab label="Reviews">
+            <div class="reviews">
+              <mat-list>
+                <mat-list-item *ngFor="">
+                  <img mat-list-avatar [src]="" alt="User Avatar">
+                  <div mat-line></div>
+                  <div mat-line>
+                    <mat-icon>star</mat-icon>
+                  </div>
+                  <p></p>
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
