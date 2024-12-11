@@ -1,22 +1,14 @@
-# Use the official .NET 9 SDK image for building the application
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
+WORKDIR /app
+EXPOSE 8000
+
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
-WORKDIR /app
-
-# Copy csproj and restore dependencies
-COPY *.csproj .
-RUN dotnet restore
-
-# Copy the rest of the application code and build
+WORKDIR /src
 COPY . .
-RUN dotnet publish -c Release -o /out
+RUN dotnet restore "Rideout.csproj"
+RUN dotnet publish "Rideout.csproj" -c Release -o /app/publish
 
-# Use the official .NET 9 runtime image for running the application
-FROM mcr.microsoft.com/dotnet/aspnet:9.0
+FROM base AS final
 WORKDIR /app
-COPY --from=build /out .
-
-# Expose the port your backend listens on
-EXPOSE 5000
-
-# Set the entry point
+COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "Rideout.dll"]
