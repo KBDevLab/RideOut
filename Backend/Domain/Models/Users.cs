@@ -23,6 +23,14 @@ public partial class Users
 
     public DateTime? Updatedat { get; set; }
 
+    public int? Statid { get; set; }
+
+    public string? Status { get; set; }
+
+    public int? Rideid { get; set; }
+
+    public virtual ICollection<Losses> Losses { get; set; } = new List<Losses>();
+
     public virtual ICollection<Messages> Messages { get; set; } = new List<Messages>();
 
     public virtual ICollection<Notifications> Notifications { get; set; } = new List<Notifications>();
@@ -31,5 +39,15 @@ public partial class Users
 
     public virtual ICollection<Reviews> Reviews { get; set; } = new List<Reviews>();
 
+    public virtual Rides? Ride { get; set; }
+
     public virtual ICollection<Rideouts> Rideouts { get; set; } = new List<Rideouts>();
+
+    public virtual ICollection<Rides> Rides { get; set; } = new List<Rides>();
+
+    public virtual Stats? Stat { get; set; }
+
+    public virtual ICollection<Stats> Stats { get; set; } = new List<Stats>();
+
+    public virtual ICollection<Wins> Wins { get; set; } = new List<Wins>();
 }
