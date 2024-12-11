@@ -1,0 +1,39 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  dockerHubConnection: 'rideout-app'  
+  dockerRepository: 'rideout-app' 
+  backendTag: 'backend-$(Build.BuildId)' 
+  frontendTag: 'frontend-$(Build.BuildId)' 
+
+jobs:
+- job: BuildAndPush
+  displayName: 'Build and Push Docker Images to a Single Repository'
+  steps:
+
+    - task: Checkout@1
+      displayName: 'Checkout Code'
+
+    - task: Docker@2
+      displayName: 'Build and Push Backend Image'
+      inputs:
+        command: 'buildAndPush'
+        containerRegistry: $(rideout-app)
+        repository: $(rideout-app)  
+        dockerfile: 'backend/Dockerfile'
+        buildContext: '.'
+        tags: $(backendTag) 
+  
+    - task: Docker@2
+      displayName: 'Build and Push Frontend Image'
+      inputs:
+        command: 'buildAndPush'
+        containerRegistry: $(dockerHubConnection)
+        repository: $(rideout-app)
+        dockerfile: 'Client/RideoutUI/Dockerfile'
+        buildContext: '.'
+        tags: $(frontendTag)
