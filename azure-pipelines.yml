@@ -22,7 +22,7 @@ jobs:
       displayName: 'Build and Push Backend Image'
       inputs:
         command: 'buildAndPush'
-        containerRegistry: $(rideout-app)
+        containerRegistry: 'rideout-app'
         repository: $(rideout-app)  
         dockerfile: 'backend/Dockerfile'
         buildContext: '.'
@@ -32,7 +32,7 @@ jobs:
       displayName: 'Build and Push Frontend Image'
       inputs:
         command: 'buildAndPush'
-        containerRegistry: $(dockerHubConnection)
+        containerRegistry: 'rideout-app'
         repository: $(rideout-app)
         dockerfile: 'Client/RideoutUI/Dockerfile'
         buildContext: '.'
