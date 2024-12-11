@@ -23,7 +23,7 @@ jobs:
       inputs:
         command: 'buildAndPush'
         containerRegistry: 'rideout-app'
-        repository: $(rideout-app)  
+        repository: 'rideout-app'  
         dockerfile: 'backend/Dockerfile'
         buildContext: '.'
         tags: $(backendTag) 
@@ -33,7 +33,7 @@ jobs:
       inputs:
         command: 'buildAndPush'
         containerRegistry: 'rideout-app'
-        repository: $(rideout-app)
+        repository: 'rideout-app'
         dockerfile: 'Client/RideoutUI/Dockerfile'
         buildContext: '.'
         tags: $(frontendTag)
