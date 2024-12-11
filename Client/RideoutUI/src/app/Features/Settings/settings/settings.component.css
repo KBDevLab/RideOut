@@ -1,0 +1,11 @@
+button[mat-icon-button] {
+  color: rgb(255, 255, 255);
+}
+
+mat-menu-item {
+  font-size: 14px;
+}
+
+mat-icon {
+  margin-right: 10px;
+}

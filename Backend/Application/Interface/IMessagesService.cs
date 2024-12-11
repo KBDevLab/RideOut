@@ -1,15 +1,15 @@
-using Rideout.Domain.Models;
+using Rideout.Application.DTOs;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Rideout.Domain.Interface
+namespace Rideout.Application.Interface
 {
-    public interface IMessageService
+    public interface IMessagesService
     {
-        Task<IEnumerable<Messages>> GetMessagesByRideOutIdAsync(int rideOutId);
-        Task<Messages> GetMessageByIdAsync(int messageId);
-        Task<Messages> AddMessageAsync(Messages message);
+        Task<MessagesDto> GetMessageByIdAsync(int messageId);
+        Task<MessagesDto> CreateMessageAsync(MessagesDto message);
+        Task<MessagesDto> UpdateMessageAsync(int messageId, MessagesDto message);
         Task<bool> DeleteMessageAsync(int messageId);
-        Task<bool> UpdateMessageAsync(Messages message);
+        
     }
 }

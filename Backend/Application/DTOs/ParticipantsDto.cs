@@ -1,6 +1,6 @@
 namespace Rideout.Application.DTOs
 {
-    public class ParticipantsDTO
+    public class ParticipantsDto
     {
         public int ParticipantID { get; set; }
         public int RideOutID { get; set; }

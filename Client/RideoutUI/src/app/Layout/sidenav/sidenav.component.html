@@ -1,0 +1,35 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #sidenav
+    class="sidenav"
+    mode="side"
+    opened>
+    
+    <mat-toolbar color="primary" class="sidenav-header">
+      <mat-icon class="logo-icon">directions_bike</mat-icon>
+      <span>RideOut</span>
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item
+        *ngFor="let item of navItems"
+        (click)="onNavigate(item.route)"
+        [class.active]="currentRoute === item.route"
+      >
+        <mat-icon matListIcon>{{ item.icon }}</mat-icon>
+        <span matLine>{{ item.label }}</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="top-toolbar">
+      <button mat-icon-button (click)="toggleSidenav(sidenav)">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Welcome to RideOut</span>
+    </mat-toolbar>
+    <div class="main-content">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

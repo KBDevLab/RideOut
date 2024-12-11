@@ -36,7 +36,7 @@ namespace Rideout.Infrastructure.Repositories
                 .ToListAsync();
         }
 
-        public async Task<Participants> UpdateAsync(Participants participant)
+        public async Task<Participants> UpdateParticipantAsync(int participantId, Participants participant)
         {
             _ctx.Participants.Update(participant);
             await _ctx.SaveChangesAsync();

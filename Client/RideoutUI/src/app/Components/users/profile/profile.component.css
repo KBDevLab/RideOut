@@ -1,0 +1,57 @@
+/* Main container styles */
+.main-container {
+    padding: 16px;
+  }
+  
+  /* Hero section styles */
+  .hero-section {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  
+  .hero-section h1 {
+    font-size: 2rem;
+    margin-bottom: 16px;
+  }
+  
+  .quick-actions button {
+    margin: 8px;
+  }
+  
+  /* Tab content styles */
+  .tab-content {
+    border: 2px solid #149e7c; /* Add your desired border color */
+    border-radius: 8px; /* Optional for rounded corners */
+    padding: 16px;
+    margin-top: 16px;
+  }
+  
+  /* Optional styles for mat-tab-group */
+  .mat-tab-group {
+    margin-top: 16px;
+  }
+
+  .content-container {
+    border: black;
+    height: auto; /* Adjust height if needed */
+    border: 1px solid #009688; /* Set border color for the nested container */
+    background-color: #e0f2f1; /* Optional background color */
+    border-radius: 4px;
+    padding: 16px;
+    width: 100%; /* Set the width, or adjust it to your needs (e.g., 80%, 500px) */
+    max-width: 800px; /* Optional maximum width */
+    margin: 0 auto; /* Center the container */
+  }
+
+  .mat-tab-label-active {
+    color: #00796b !important; /* Change the color of the text */
+    border-bottom: 2px solid #00796b !important; /* Add a bottom border */
+  }
+
+  .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
+    color: #149e7c;
+  }
+
+  .mdc-tab__text-label{
+    color: black;
+  }

@@ -1,0 +1,40 @@
+<div class="hero-section">
+  Welcome Back [Username]
+</div>
+<mat-card class="user-card">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <img 
+        [src]="user?.Profilepicture || 'haventRoutedYet.png'" 
+        [alt]="user?.Name || 'Avatar'" 
+        loading="lazy">
+    </div>
+    <mat-card-title>{{ user?.Name || 'Unknown User' }}</mat-card-title>
+    <mat-card-subtitle *ngIf="user?.Location">{{ user?.Location }}</mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <p *ngIf="user?.Bio">{{ user?.Bio }}</p>
+    <p *ngIf="user?.Email"><strong>Email:</strong> {{ user?.Email }}</p>
+    <p *ngIf="user?.Createdat">
+      <strong>Joined:</strong> {{ user?.Createdat | date: 'medium' }}
+    </p>
+  </mat-card-content>
+  
+  <mat-card-actions>
+    <button 
+      mat-raised-button 
+      color="primary" 
+      aria-label="Edit Profile" 
+      (click)="editUser()">
+      Edit Profile
+    </button>
+    <button 
+      mat-button 
+      color="warn" 
+      aria-label="Delete Account" 
+      (click)="deleteUser()">
+      Delete Account
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .left-sidebar,
+  .right-sidebar {
+    width: 20%;
+    background: lightgray; 
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    background: lightgray;
+  }

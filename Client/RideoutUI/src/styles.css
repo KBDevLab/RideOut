@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-color: #303030;
+    color: #333;
+}
+
+.btn-main {
+    background-color: #80C7B5; /* Light Green */
+    color: rgb(79, 231, 190);
+    border: 2px solid #017064;
+  }
+  
+  .btn-secondary {
+    background-color: #FFA500; /* Accent Orange */
+    color: rgb(5, 132, 118);
+    border: 2px solid #017064;
+  }

@@ -1,6 +1,6 @@
 namespace Rideout.Application.DTOs
 {
-    public class UsersDTO
+    public class UsersDto
     {
         public int UserID { get; set; }
         public string Name { get; set; }

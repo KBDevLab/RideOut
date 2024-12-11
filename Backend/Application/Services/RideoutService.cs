@@ -20,31 +20,31 @@ public class RideoutService : IRideoutService
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
-    public async Task<IEnumerable<RideOutDTO>> GetAllRideOutsAsync()
+    public async Task<IEnumerable<RideoutDto>> GetAllRideOutsAsync()
     {
         var rideOuts = await _repository.GetAllRideOutsAsync();
-        return _mapper.Map<IEnumerable<RideOutDTO>>(rideOuts);
+        return _mapper.Map<IEnumerable<RideoutDto>>(rideOuts);
     }
 
-    public async Task<RideOutDTO> GetRideOutByIdAsync(int rideOutId)
+    public async Task<RideoutDto> GetRideOutByIdAsync(int rideOutId)
     {
         var rideOut = await _repository.GetRideOutByIdAsync(rideOutId);
         if (rideOut == null) return null; 
-        return _mapper.Map<RideOutDTO>(rideOut);
+        return _mapper.Map<RideoutDto>(rideOut);
     }
 
-    public async Task<RideOutDTO> CreateRideOutAsync(RideOutDTO rideOutCreateDTO)
+    public async Task<RideoutDto> CreateRideOutAsync(RideoutDto rideOutCreateDTO)
     {
         var rideOut = _mapper.Map<Rideouts>(rideOutCreateDTO);
         await _repository.AddRideOutAsync(rideOut);
-        return _mapper.Map<RideOutDTO>(rideOut);
+        return _mapper.Map<RideoutDto>(rideOut);
     }
 
-    public async Task<bool> UpdateRideOutAsync(int rideOutId, RideOutDTO rideOutDTO)
+    public async Task<bool> UpdateRideOutAsync(int rideOutId, RideoutDto rideOutDTO)
     {
         var existingRideOut = await _repository.GetRideOutByIdAsync(rideOutId);
         if (existingRideOut == null) return false;
-        
+
         _mapper.Map(rideOutDTO, existingRideOut);
         await _repository.UpdateRideOutAsync(existingRideOut);
         return true;

@@ -1,0 +1,28 @@
+.user-card {
+    max-width: 400px;
+    margin: 20px auto;
+  
+    .mat-card-header {
+      .mat-card-avatar {
+        background-size: cover;
+        background-position: center;
+      }
+    }
+  
+    .mat-card-content {
+      p {
+        margin: 0;
+        line-height: 1.6;
+      }
+  
+      strong {
+        font-weight: bold;
+      }
+    }
+  
+    .mat-card-actions {
+      button {
+        margin-right: 8px;
+      }
+    }
+  }

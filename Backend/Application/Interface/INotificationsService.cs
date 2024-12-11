@@ -1,12 +1,13 @@
-using Rideout.Domain.Models;
+using Rideout.Application.DTOs;
 
-namespace Rideout.Domain.Interface
+namespace Rideout.Application.Interface
 {
-    public interface INotificationService
+    public interface INotificationsService
     {
-        Task<List<Notifications>> GetNotificationsByUserIdAsync(int userId);
-        Task<Notifications> GetNotificationByIdAsync(int notificationId);
-        Task AddNotificationAsync(Notifications notification);
-        Task MarkAsReadAsync(int notificationId);
+        //Task<IEnumerable<NotificationsDto>> GetNotificationsByUserIdAsync(int userId);
+        Task<NotificationsDto> GetNotificationByIdAsync(int notificationId);
+        Task<NotificationsDto> CreateNotificationAsync(NotificationsDto notification);
+        Task<NotificationsDto> UpdateNotificationAsync(int notificationId, NotificationsDto notificationDto);
+        Task<bool> DeleteNotificationAsync(int notificationId);
     }
 }

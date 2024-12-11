@@ -1,7 +1,7 @@
 
 namespace Rideout.Application.DTOs
 {
-public class RideOutDTO
+public class RideoutDto
 {
     public int RideOutID { get; set; }
     public int HostUserID { get; set; }

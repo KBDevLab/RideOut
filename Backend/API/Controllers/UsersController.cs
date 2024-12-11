@@ -36,21 +36,21 @@ namespace Rideout.API.Controllers
 
         // Create a new user
         [HttpPost]
-        public async Task<IActionResult> CreateUser([FromBody] UsersDTO UsersDTO)
+        public async Task<IActionResult> CreateUser([FromBody] UsersDto UsersDto)
         {
-            if (UsersDTO == null)
+            if (UsersDto == null)
                 return BadRequest();
-            var createdUser = await _userService.CreateUserAsync(UsersDTO);
+            var createdUser = await _userService.CreateUserAsync(UsersDto);
             return CreatedAtAction(nameof(GetUserById), new { id = createdUser.UserID }, createdUser);
         }
 
         // Update user
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] UsersDTO UsersDTO)
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UsersDto UsersDto)
         {
-            if (UsersDTO == null || id != UsersDTO.UserID)
+            if (UsersDto == null || id != UsersDto.UserID)
                 return BadRequest();
-            var updatedUser = await _userService.UpdateUserAsync(UsersDTO);
+            var updatedUser = await _userService.UpdateUserAsync(UsersDto);
             if (updatedUser == null)
                 return NotFound();
             return NoContent();
