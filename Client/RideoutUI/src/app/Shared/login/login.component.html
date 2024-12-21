@@ -1,45 +1,68 @@
-<div class="login-container">
-    <mat-card class="login-card">
-      <mat-card-header>
-        <mat-card-title class="txt-card-title">Welcome to RideOuts</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <mat-form-field appearance="outline">
-            <input
-            matInput
-            type="email"
-            placeholder="pat@example.com"
-            required
-          />
-          @if (!user?.Email) {
-            <!-- <mat-error>{{errorMessage()}}</mat-error> -->
-          }
-          </mat-form-field>
-          
-          <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput type="password" placeholder="Password" formControlName="password" required>
-            <mat-error *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
-              Password is required.
-            </mat-error>
-          </mat-form-field>
-  
-          <div class="button-container">
-            <button mat-raised-button class="btn-main" type="submit" [disabled]="!loginForm.valid">Login</button>
-          </div>
-  
-          <div class="forgot-password">
-            <a routerLink="/forgot-password">Forgot Password?</a>
-          </div>
-  
-          <mat-divider></mat-divider>
-  
-          <div class="signup">
-            Don't have an account? <a routerLink="/register">Sign Up</a>
-          </div>
-        </form>
-      </mat-card-content>
-    </mat-card>
-    <p class="error-message" *ngIf="error">{{ error }}</p>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
+    <h2 class="text-center mb-4">Welcome Back</h2>
+    <form>
+
+      <div class="form-group mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+
+
+      <div class="form-group mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Enter your password"
+          required
+        />
+      </div>
+
+
+      <div class="form-check mb-3">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="rememberMe"
+        />
+        <label class="form-check-label" for="rememberMe">Remember Me</label>
+      </div>
+
+
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+      >
+        Log In
+      </button>
+
+
+      <div class="text-center mt-3">
+        <a href="#" class="text-decoration-none">Forgot Password?</a>
+      </div>
+    </form>
+
+
+    <div class="text-center my-3">
+      <span class="text-muted">or</span>
+    </div>
+
+
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-outline-primary w-100 me-2">
+        <i class="bi bi-facebook"></i> Facebook
+      </button>
+      <button class="btn btn-outline-danger w-100 ms-2">
+        <i class="bi bi-google"></i> Google
+      </button>
+    </div>
   </div>
+</div>

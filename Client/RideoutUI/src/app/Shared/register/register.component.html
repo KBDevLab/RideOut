@@ -1,56 +1,96 @@
-<div class="register-container">
-    <mat-card class="register-card">
-      <mat-card-header>
-        <mat-card-title class="txt-card-title">Create Your RideOuts Account</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <mat-form-field appearance="outline">
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name" required>
-            <mat-error *ngIf="registerForm.get('name')?.hasError('required') && registerForm.get('name')?.touched">
-              Name is required.
-            </mat-error>
-          </mat-form-field>
-  
-          <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput type="email" placeholder="Email" formControlName="email" required email>
-            <mat-error *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched">
-              Please enter a valid email address.
-            </mat-error>
-            <mat-error *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched">
-              Email is required.
-            </mat-error>
-          </mat-form-field>
-  
-          <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput type="password" placeholder="Password" formControlName="password" required>
-            <mat-error *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched">
-              Password is required.
-            </mat-error>
-          </mat-form-field>
-  
-          <mat-form-field appearance="outline">
-            <mat-label>Confirm Password</mat-label>
-            <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword" required>
-            <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('required') && registerForm.get('confirmPassword')?.touched">
-              Please confirm your password.
-            </mat-error>
-            <mat-error *ngIf="registerForm.hasError('passwordMismatch')">
-              Passwords do not match.
-            </mat-error>
-          </mat-form-field>
-  
-          <div class="button-container">
-            <button mat-raised-button class="btn-main" type="submit" [disabled]="!registerForm.valid">Register</button>
-          </div>
-          <div class="login">
-            Already have an account? <a routerLink="/login">Login</a>
-          </div>
-        </form>
-      </mat-card-content>
-    </mat-card>
-    <p class="error-message" *ngIf="error">{{ error }}</p>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg p-4" style="max-width: 500px; width: 100%;">
+    <h2 class="text-center mb-4">Create an Account</h2>
+    <form>
+
+      <div class="form-group mb-3">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="fullName"
+          placeholder="Enter your full name"
+          required
+        />
+      </div>
+
+
+      <div class="form-group mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+
+
+      <div class="form-group mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Create a password"
+          required
+        />
+      </div>
+
+
+      <div class="form-group mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="confirmPassword"
+          placeholder="Re-enter your password"
+          required
+        />
+      </div>
+
+
+      <div class="form-check mb-3">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="termsConditions"
+          required
+        />
+        <label class="form-check-label" for="termsConditions">
+          I agree to the <a href="#" class="text-decoration-none">Terms and Conditions</a>
+        </label>
+      </div>
+
+
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+      >
+        Register
+      </button>
+
+
+      <div class="text-center mt-3">
+        <span>Already have an account?</span>
+        <a href="#" class="text-decoration-none">Log In</a>
+      </div>
+    </form>
+
+
+    <div class="text-center my-3">
+      <span class="text-muted">or</span>
+    </div>
+
+    
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-outline-primary w-100 me-2">
+        <i class="bi bi-facebook"></i> Sign Up with Facebook
+      </button>
+      <button class="btn btn-outline-danger w-100 ms-2">
+        <i class="bi bi-google"></i> Sign Up with Google
+      </button>
+    </div>
   </div>
+</div>
