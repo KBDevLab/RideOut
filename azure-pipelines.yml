@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - main 
+      - main
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -24,19 +24,16 @@ stages:
         packageType: sdk
         version: '9.x'
 
-    - task: Checkout@1
-      displayName: Checkout Code
-
     - script: |
         cd $(backendFolder)
         dotnet restore
         dotnet build --configuration $(buildConfiguration)
-      displayName: Build .NET Project
+      displayName: Build .NET Backend Project
 
     - script: |
         cd $(backendFolder)
         dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/backend
-      displayName: Publish .NET Project
+      displayName: Publish .NET Backend Project
 
     - publish: $(Build.ArtifactStagingDirectory)/backend
       artifact: backend
@@ -47,10 +44,15 @@ stages:
     - task: NodeTool@0
       displayName: Install Node.js
       inputs:
-        versionSpec: '23.x'
+        versionSpec: '16.x'
 
-    - task: Checkout@1
-      displayName: Checkout Code
+    - task: Cache@2
+      displayName: Cache npm modules
+      inputs:
+        key: 'npm | "$(Agent.OS)" | package-lock.json'
+        restoreKeys: |
+          npm | "$(Agent.OS)"
+        path: $(Pipeline.Workspace)/.npm
 
     - script: |
         cd $(frontendFolder)
@@ -97,6 +99,6 @@ stages:
             displayName: Deploy Angular App to Azure Static Web Apps
             inputs:
               azureSubscription: 'rideout_app'
-              appLocation: $(Client/RideOutUI)
+              appLocation: $(frontendFolder)
               outputLocation: dist/rideout-ui
               appServiceName: 'rideout-ui'
