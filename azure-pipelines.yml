@@ -98,7 +98,7 @@ stages:
           - task: AzureStaticWebApp@0
             displayName: Deploy Angular App to Azure Static Web Apps
             inputs:
-              azureSubscription: 'rideout_app'
+              azureSubscription: 'rideoutUI'
               appLocation: $(frontendFolder)
               outputLocation: dist/rideout-ui
               appServiceName: 'rideout-ui'
