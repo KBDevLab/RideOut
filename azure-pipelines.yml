@@ -1,40 +1,102 @@
 trigger:
-- main
+  branches:
+    include:
+      - main 
 
 pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  dockerHubConnection: 'rideout-app'
-  dockerRepository: 'rideout-app'
-  backendTag: 'backend-$(Build.BuildId)'
-  frontendTag: 'frontend-$(Build.BuildId)'
+  buildConfiguration: 'Release'
+  backendFolder: 'Backend'
+  frontendFolder: 'Client/RideOutUI'
 
-jobs:
-- job: BuildAndPush
-  displayName: 'Build and Push Docker Images'
-  steps:
-  - checkout: self
-    displayName: 'Checkout Code'
+stages:
+- stage: Build
+  displayName: Build Projects
+  jobs:
+  - job: Build_Backend
+    displayName: Build .NET Backend
+    steps:
+    - task: UseDotNet@2
+      displayName: Install .NET 9 SDK
+      inputs:
+        packageType: sdk
+        version: '9.x'
 
-  - task: Docker@2
-    displayName: 'Build and Push Backend Image'
-    inputs:
-      command: buildAndPush
-      containerRegistry: $(dockerHubConnection)
-      repository: $(dockerRepository)
-      dockerfile: 'backend/Dockerfile'
-      buildContext: '.'
-      tags: |
-        $(backendTag)
+    - task: Checkout@1
+      displayName: Checkout Code
 
-  - task: Docker@2
-    displayName: 'Build and Push Frontend Image'
-    inputs:
-      command: buildAndPush
-      containerRegistry: $(dockerHubConnection)
-      repository: $(dockerRepository)
-      dockerfile: 'Client/RideoutUI/Dockerfile'
-      buildContext: '.'
-      tags: |
-        $(frontendTag)
+    - script: |
+        cd $(backendFolder)
+        dotnet restore
+        dotnet build --configuration $(buildConfiguration)
+      displayName: Build .NET Project
+
+    - script: |
+        cd $(backendFolder)
+        dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/backend
+      displayName: Publish .NET Project
+
+    - publish: $(Build.ArtifactStagingDirectory)/backend
+      artifact: backend
+
+  - job: Build_Frontend
+    displayName: Build Angular Frontend
+    steps:
+    - task: NodeTool@0
+      displayName: Install Node.js
+      inputs:
+        versionSpec: '23.x'
+
+    - task: Checkout@1
+      displayName: Checkout Code
+
+    - script: |
+        cd $(frontendFolder)
+        npm install
+        npm run build --prod
+      displayName: Build Angular App
+
+    - publish: $(frontendFolder)/dist
+      artifact: frontend
+
+- stage: Deploy
+  displayName: Deploy to Azure
+  dependsOn: Build
+  jobs:
+  - deployment: Deploy_Backend
+    displayName: Deploy Backend
+    environment: 'rideout-dev'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: backend
+            displayName: Download Backend Artifact
+
+          - task: AzureWebApp@1
+            displayName: Deploy Backend to Azure App Service
+            inputs:
+              azureSubscription: 'rideoutApp'
+              appType: webApp
+              appName: 'rideout-api'
+              package: $(Pipeline.Workspace)/backend
+
+  - deployment: Deploy_Frontend
+    displayName: Deploy Frontend
+    environment: 'rideout-dev'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: frontend
+            displayName: Download Frontend Artifact
+
+          - task: AzureStaticWebApp@0
+            displayName: Deploy Angular App to Azure Static Web Apps
+            inputs:
+              azureSubscription: 'rideout_app'
+              appLocation: $(Client/RideOutUI)
+              outputLocation: dist/rideout-ui
+              appServiceName: 'rideout-ui'
