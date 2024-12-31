@@ -172,6 +172,13 @@ docker build -t rideout-app .
 	3.	Set up CI/CD Pipelines:
 	•	Use Azure DevOps for automated build, test, and deployment pipelines.
 
+<img width="912" alt="Screenshot 2024-12-11 at 6 00 18 AM" src="https://github.com/user-attachments/assets/ecef594e-c751-431a-9a35-1cd8c1c571db" />
+<img width="921" alt="Screenshot 2024-12-11 at 6 06 56 AM" src="https://github.com/user-attachments/assets/ca00c5ed-b50b-42b2-953e-d07e98f43678" />
+
+
+
+ 
+
 Contributing
 
 We welcome contributions to Rideout! Here’s how you can contribute:

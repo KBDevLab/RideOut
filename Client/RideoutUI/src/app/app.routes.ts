@@ -14,6 +14,7 @@ import { MainComponent } from './Layout/Main/main/main.component';
 import { AboutComponent } from './Components/about/about.component';
 import { SettingsComponent } from './Features/Settings/settings/settings.component';
 import { NotificationsComponent } from './Components/notifications/notifications.component';
+import { ExploreComponent } from './Components/explore/explore.component';
 
 export const routes: Routes = 
 [
@@ -31,9 +32,10 @@ export const routes: Routes =
             { path: 'register', component: RegisterComponent },
             { path: 'tos', component: TermsofserviceComponent },
             { path: 'policy', component: PrivacypolicyComponent },
-            { path: 'users/profile', component: ProfileComponent },
+            { path: 'users/profile/c', component: ProfileComponent},
             { path: 'about', component: AboutComponent },
             { path: 'settings', component: SettingsComponent },
+            { path: 'explore', component: ExploreComponent },
             { path: '**', redirectTo: '' }
         ]
     },

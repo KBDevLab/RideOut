@@ -1,0 +1,104 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  backendFolder: 'Backend'
+  frontendFolder: 'Client/RideOutUI'
+
+stages:
+- stage: Build
+  displayName: Build Projects
+  jobs:
+  - job: Build_Backend
+    displayName: Build .NET Backend
+    steps:
+    - task: UseDotNet@2
+      displayName: Install .NET 9 SDK
+      inputs:
+        packageType: sdk
+        version: '9.x'
+
+    - script: |
+        cd $(backendFolder)
+        dotnet restore
+        dotnet build --configuration $(buildConfiguration)
+      displayName: Build .NET Backend Project
+
+    - script: |
+        cd $(backendFolder)
+        dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/backend
+      displayName: Publish .NET Backend Project
+
+    - publish: $(Build.ArtifactStagingDirectory)/backend
+      artifact: backend
+
+  - job: Build_Frontend
+    displayName: Build Angular Frontend
+    steps:
+    - task: NodeTool@0
+      displayName: Install Node.js
+      inputs:
+        versionSpec: '16.x'
+
+    - task: Cache@2
+      displayName: Cache npm modules
+      inputs:
+        key: 'npm | "$(Agent.OS)" | package-lock.json'
+        restoreKeys: |
+          npm | "$(Agent.OS)"
+        path: $(Pipeline.Workspace)/.npm
+
+    - script: |
+        cd $(frontendFolder)
+        npm install
+        npm run build --prod
+      displayName: Build Angular App
+
+    - publish: $(frontendFolder)/dist
+      artifact: frontend
+
+- stage: Deploy
+  displayName: Deploy to Azure
+  dependsOn: Build
+  jobs:
+  - deployment: Deploy_Backend
+    displayName: Deploy Backend
+    environment: 'rideout-dev'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: backend
+            displayName: Download Backend Artifact
+
+          - task: AzureWebApp@1
+            displayName: Deploy Backend to Azure App Service
+            inputs:
+              azureSubscription: 'rideoutApp'
+              appType: webApp
+              appName: 'rideout-api'
+              package: $(Pipeline.Workspace)/backend
+
+  - deployment: Deploy_Frontend
+    displayName: Deploy Frontend
+    environment: 'rideout-dev'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: frontend
+            displayName: Download Frontend Artifact
+
+          - task: AzureStaticWebApp@0
+            displayName: Deploy Angular App to Azure Static Web Apps
+            inputs:
+              azureSubscription: 'rideoutUI'
+              appLocation: $(frontendFolder)
+              outputLocation: dist/rideout-ui
+              appServiceName: 'rideout-ui'
